@@ -14,14 +14,6 @@
     align-items: center;
     min-height: 100vh;
 }
-.side-image{
-    background-image: url("/static/account/img/desert.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 10px 0 0 10px;
-    position: relative;
-}
 .row{
   width:  900px;
   height:550px;
@@ -53,12 +45,6 @@ i{
 .input-box{
   width: 330px;
   box-sizing: border-box;
-}
-img{
-    width: 35px;
-    position: absolute;
-    top: 30px;
-    left: 30px;
 }
 .input-box header{
     font-weight: 700;
