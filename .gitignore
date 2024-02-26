@@ -1,5 +1,37 @@
+## Virtual environment
 .venv/
+
+## Arquivos de compilação
+*.o
+*.out
+*.exe
+
+## Arquivos temporários
+*~
+.DS_Store
+Thumbs.db
+
+## Configuração de embiente
 .env
-db.sqlite3
-__pycache__
+
+## Logs e arquivos de registro
+/Logs
+*.log
+
+## Arquivos de cache
+/cache/
+
+## Arquivos de banco de dados
+*.sqlite3
+*.db
+
+## Específicos do Django
+*.env
+*.pyc
+*.pyo
+*.pyd
 media/
+__pycache__/
+.vscode/
+.idea/
+env/

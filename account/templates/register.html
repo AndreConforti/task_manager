@@ -2,60 +2,53 @@
 {% load static %}
 
 {% block 'head' %}
-
     <link rel="stylesheet" href="{% static 'account/css/register.css' %}">
-
 {% endblock 'head' %}
+
+{% block 'title' %}Registre-se{% endblock 'title' %}
 
 {% block 'body' %}
 
-<div class="container">
-    <div class="title">Regristre-se</div>
-    <form action="#" method="post">
-        <div class="user-details">
-            <div class="input-box">
-                <span class="details">Nome de usuário</span>
-                <input type="text" name="username" placeholder="Nome de usuário" required>                
-            </div>
-            <div class="input-box">
-                <span class="details">E-mail</span>
-                <input type="text" name="email" placeholder="E-mail" required>                
-            </div>           
-            <div class="input-box">
-                <span class="details">Senha</span>
-                <input type="text" name="password" placeholder="Senha" required>                
-            </div>            
-            <div class="input-box">
-                <span class="details">Confirma Senha</span>
-                <input type="text" name="confirm_password" placeholder="Confirma Senha" required>                
-            </div>
-        </div>
-        <div class="gender-details">
-            <input type="radio" name="gender" id="dot-1">
-            <input type="radio" name="gender" id="dot-2">
-            <input type="radio" name="gender" id="dot-3">
-            <span class="gender-title">Gender</span>
-            <div class="category">
-                <label for="dot-1">
-                    <span class="dot one"></span>
-                    <span class="gender">Male</span>
-                </label>
-                <label for="dot-2">
-                    <span class="dot two"></span>
-                    <span class="gender">Female</span>
-                </label>
-                <label for="dot-3">
-                    <span class="dot three"></span>
-                    <span class="gender">Prefer not to say</span>
-                </label>
-            </div>
-        </div>
-        <div class="button">
-            <input type="submit" value="Registrar">
-        </div>
-    </form>
+    <div class="container main">
+        <div class="row justify-content-center">
+            <header>Registre-se</header>
+            <form action="{% url 'account:log_in' %}" method="POST">
+                {% csrf_token %}
 
-</div>
-
+                <div class="col">
+                    <div class="input-box">              
+                        <div class="input-field">
+                            <input type="text" class="input" name="email" required="" autocomplete="off">
+                            <label for="email">E-mail</label> 
+                        </div> 
+                        <div class="input-field">
+                            <input type="password" class="input" name="password" required="">
+                            <label for="password">Senha</label>
+                        </div> 
+                        <div class="input-field">                        
+                            <input type="submit" class="submit" value="Entrar">
+                        </div> 
+                    </div>  
+                    
+                <div class="col">                
+                    <div class="input-box">                
+                        <form action="{% url 'account:log_in' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="input-field">
+                                <input type="text" class="input" name="email" required="" autocomplete="off">
+                                <label for="email">E-mail</label> 
+                            </div> 
+                            <div class="input-field">
+                                <input type="password" class="input" name="password" required="">
+                                <label for="password">Senha</label>
+                            </div> 
+                        <div class="signin">
+                            <span>Já possui acesso? <a href="{% url 'account:log_in' %}">Faça o Login</a></span>
+                        </div>
+                    </div>  
+                </div>
+            </form>
+        </div>
+    </div>
 
 {% endblock 'body' %}
