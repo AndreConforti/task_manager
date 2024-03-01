@@ -2,7 +2,139 @@
 {% load static %}
 
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'account/css/register.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'account/css/register.css' %}">     -->
+    <style>
+        /* POPPINS FONT */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        *{
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #5e5e5e, #dec994);
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .row {
+            width: 900px;
+            height: 550px;
+            border-radius: 10px;
+            background: #fff;
+            padding: 0px;
+            box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .left {
+            background-color: #27DB8F;
+            border-radius: 10px 0 0 10px;
+            position: relative;
+        }
+
+        .right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .input-box {
+            width: 330px;
+            box-sizing: border-box;
+        }
+
+        .input-box header {
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .input-field {
+            position: relative;
+            padding: 0 10px 0 10px;
+        }
+
+        .input_css {
+            height: 45px;
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            outline: none;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .input-box .input-field label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .input-field input:focus ~ label {
+            top: -10px;
+            font-size: 13px;
+        }
+
+        .input-field input:valid ~ label {
+            top: -10px;
+            font-size: 13px;
+            color: #000;
+        }
+
+        .input-field .input_css:focus,
+        .input-field .input_css:valid {
+            box-shadow: none;
+            border: none;
+            border-bottom: 1px solid #27DB8F;
+        }
+
+        .submit {
+            border: none;
+            outline: none;
+            height: 45px;
+            background: #27DB8F;
+            border-radius: 5px;
+            transition: .4s;
+        }
+
+        .submit:hover {
+            background: #5e5e5e;
+            color: #fff;
+        }
+
+        .signin {
+            text-align: center;
+            font-size: small;
+            margin-top: 25px;
+        }
+
+        span a {
+            text-decoration: none;
+            font-weight: 700;
+            color: #000;
+            transition: .5s;
+        }
+
+        span a:hover {
+            text-decoration: underline;
+            color: #5e5e5e;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .row {
+                max-width: 420px;
+                width: 100%;
+            }
+        }
+    </style>
 {% endblock 'head' %}
 
 {% block 'title' %}Registre-se{% endblock 'title' %}
@@ -10,45 +142,37 @@
 {% block 'body' %}
 
     <div class="container main">
-        <div class="row justify-content-center">
-            <header>Registre-se</header>
-            <form action="{% url 'account:log_in' %}" method="POST">
-                {% csrf_token %}
-
-                <div class="col">
-                    <div class="input-box">              
-                        <div class="input-field">
-                            <input type="text" class="input" name="email" required="" autocomplete="off">
-                            <label for="email">E-mail</label> 
-                        </div> 
-                        <div class="input-field">
-                            <input type="password" class="input" name="password" required="">
-                            <label for="password">Senha</label>
-                        </div> 
-                        <div class="input-field">                        
-                            <input type="submit" class="submit" value="Entrar">
-                        </div> 
-                    </div>  
-                    
-                <div class="col">                
-                    <div class="input-box">                
-                        <form action="{% url 'account:log_in' %}" method="POST">
-                            {% csrf_token %}
-                            <div class="input-field">
-                                <input type="text" class="input" name="email" required="" autocomplete="off">
-                                <label for="email">E-mail</label> 
-                            </div> 
-                            <div class="input-field">
-                                <input type="password" class="input" name="password" required="">
-                                <label for="password">Senha</label>
-                            </div> 
-                        <div class="signin">
-                            <span>Já possui acesso? <a href="{% url 'account:log_in' %}">Faça o Login</a></span>
-                        </div>
-                    </div>  
+        <div class="row">
+            <div class="col-md-6 left">
+                <div class="text-dark position-absolute top-50 start-50 translate-middle">
+                    <p>Task Manager</p>
+                    <p><i>Gerenciador de Tarefas</i></p>
                 </div>
-            </form>
+            </div>
+            <div class="col-md-6 right">
+                <div class="input-box">
+                    <header>Registre-se</header>
+                    <form action="{% url 'account:log_in' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="input-field">
+                            <input type="text" class="form-control input_css rounded-0" name="email" required="" autocomplete="off">
+                            <label for="email">E-mail</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" class="form-control input_css rounded-0" name="password" required="">
+                            <label for="password">Senha</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="submit" class="btn btn-primary submit" value="Entrar">
+                        </div>
+                    </form>
+                    <div class="signin">
+                        <span>Não possui acesso? <a href="{% url 'account:log_in' %}">Cadastre-se aqui</a></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+  
 
 {% endblock 'body' %}
