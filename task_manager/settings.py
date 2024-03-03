@@ -1,9 +1,11 @@
+import os
 from pathlib import Path
 from decouple import config
+
 from django.contrib.messages import constants
 
 
-import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -138,3 +140,13 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS       = config('EMAIL_USE_TLS')
 EMAIL_PORT          = config('EMAIL_PORT')
 EMAIL_HOST          = config('EMAIL_HOST')
+
+'''
+O ideal seria assim:
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+'''
+
+LOGIN_URL = 'account:log_in'  ## Se o usuário não estiver logado será direcionado para o Login

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        .card{
+            width: 500px; 
+            height: 350px;
+            background-color: #27DB8F;
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+        }
+        .card-body{
+            padding: 10px;
+            padding-right: 10px;
+        }
+        .card-title{
+            font-size: large;
+        }
+    </style>
+
+    <title>Confirmação de Cadastro</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Confirmação de Cadastro</h5>
+              <p class="card-text">
+                <p>Obrigado pela confirmação do seu email, {{ name }}.</p>
+                <p>Sua conta foi criada com sucesso.</p>
+                <span>Clique no botão abaixo para ativar sua conta.</span>
+                <p>Atenciosamente,</p>                
+              </p>
+              <a href="{{ activation_link|safe }}" >Ativar conta</a>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

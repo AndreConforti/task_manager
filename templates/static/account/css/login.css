@@ -75,7 +75,8 @@
    font-size: 13px;
    color: #000;
  }
- .input-field .input:focus, .input-field .input:valid{
+ .input-field .input:focus,
+ .input-field .input:valid{
     border-bottom: 1px solid #27DB8F;
  }
  .submit{
