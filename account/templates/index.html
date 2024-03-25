@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
+{% block 'head' %}{% endblock 'head' %}
+
 {% block 'title' %}Página Principal{% endblock 'title' %}
 
 {% block 'body' %}
 
     <h1>Página Principal</h1>
-    <hr>
-    <a href="{% url 'account:log_out' %}" class='btn btn-danger'>Sair do Sistema</a>
 
 {% endblock 'body' %}
+
+
+{% block 'footer' %}{% endblock 'footer' %}

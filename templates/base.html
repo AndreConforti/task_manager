@@ -1,25 +1,94 @@
 {% load static %}
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1/font/bootstrap-icons.min.css">
+  {% block 'head'%}
+  {% endblock 'head' %}
+  <title>{% block 'title' %}{% endblock 'title' %}</title>
+</head>
+<body>
+  <div class="d-flex flex-column wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger border-bottom shadow-sm mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="/"><b>TASK MANAGER</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'report:etl' %}">ETL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Tickets</a>
+                    </li>
+                    <li>
+                        {% block 'nav' %}
+                        {% endblock 'nav' %}
+                    </li>
+                </ul>
+                <div class="align-self-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/cadastro.html" class="nav-link text-white">Quero Me Cadastrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/login.html" class="nav-link text-white">Entrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="badge rounded-pill bg-light text-danger position-absolute ms-4 mt-0"
+                                title="5 produto(s) no carrinho"><small>5</small></span>
+                            <a href="/carrinho.html" class="nav-link text-white">
+                                <i class="bi-cart" style="font-size:24px;line-height:24px;"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{% static 'account/css/base.css' %}" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js" defer></script>
-    
-    {% block 'head' %}
-    {% endblock 'head' %}
+    <main class="flex-fill">
+        <div class="container">
+          {% block 'body' %}
+          {% endblock 'body' %}
+        </div>
+    </main>
 
-    <title>{% block 'title' %}{% endblock 'title' %}</title>
-    
-  </head>
+    <footer class="border-top text-muted bg-light">
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-12 col-md-4 text-center">
+                    &copy; 2024 - Napp Solutions<br>
+                    Avenida da Saudade, 189, Leme/SP<br>
+                    CPNJ 99.999.999/0001-99
+                </div>
+                <div class="col-12 col-md-4 text-center">
+                    {% block 'footer' %}
+                    {% endblock 'footer' %}
+                </div>
+                <div class="col-12 col-md-4 text-center">
+                    <a href="#" class="text-decoration-none text-dark">
+                        Contato pelo Site
+                    </a><br>
+                    E-mail: <a href="mailto:email@dominio.com" class="text-decoration-none text-dark">
+                        andre.conforti@nappsolutions.com
+                    </a><br>
+                    Telefone: <a href="phone:19988377497" class="text-decoration-none text-dark">
+                        (19) 98837-7497
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <body>
+  </div>
 
-    {% block 'body' %}
-    {% endblock 'body' %}
-
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>  
+</body>
 </html>
