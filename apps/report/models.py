@@ -16,11 +16,14 @@ class Report(models.Model):
         ('troca_erp', 'Troca de ERP'),
         ('troca_metodo', 'Troca de Método'),
         ('exclusao_dados', 'Exclusão de Dados'),
+        ('pausa_atividades', 'Solicitação de Pausa nas Atividades'),
     )
     OPTIONS_OBJECTIVE = (
         ('manutencao', 'Manutenção'),
         ('integração', 'Integração'),
         ('reintegração', 'Reintegração'),
+        ('fechamento', 'Fechamento'),
+        ('inapta', 'Unidade Inapta'),
     )
     OPTIONS_INTEGRATION = (
         ('1', '1'),
@@ -45,11 +48,12 @@ class Report(models.Model):
     responsible = models.ForeignKey(to=User, on_delete=models.DO_NOTHING, related_name='user')
     integration_type = models.CharField(max_length=1, choices=OPTIONS_INTEGRATION)
     method = models.CharField(max_length=20, choices=OPTIONS_METHOD)
-    validation_report = models.CharField(max_length=100)
+    validation_report = models.CharField(max_length=100, null=True, blank=True)
     activation_status = models.BooleanField(default=True)
     validation = models.BooleanField(default=False)
     task = models.BooleanField()
     considerations = models.TextField()
     action_required = models.CharField(max_length=255, blank=True)
+    observations = models.CharField(max_length=255, null=True, blank=True)
     sales_manager = models.ForeignKey(to=SalesManager, on_delete=models.DO_NOTHING)
     date_response = models.DateTimeField(auto_now=True)
